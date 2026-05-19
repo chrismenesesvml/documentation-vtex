@@ -1,140 +1,200 @@
-# insertCarousel: Documentacion tecnica
+# insertCarousel: Documentacion tecnica detallada
 
 ## Objetivo
 
-Explicar, funcion por funcion, como opera `insertCarousel` en checkout.
+Describir punto por punto que hace cada funcion de insertCarousel y como fluye el proceso completo del slider en checkout.
 
 ## Archivo
 
-- `checkout-ui-custom/checkout6-custom.js`
+- checkout-ui-custom/checkout6-custom.js
 
-## Funcion principal: `insertCarousel`
+## Vision general
 
-### Responsabilidad
+insertCarousel controla todo el ciclo del componente:
 
-Controla el ciclo completo del slider de recomendaciones en checkout:
+- valida contexto de checkout
+- obtiene configuracion
+- consulta recomendaciones de accesorios
+- renderiza cards
+- inicializa Slick
+- conecta el evento de agregar al carrito
 
-- validacion de contexto
-- lectura de configuracion
-- consulta de productos recomendados
-- render de cards
-- inicializacion de Slick
-- binding de eventos de agregar al carrito
+## Funcion principal: insertCarousel
 
-### Flujo interno
+### Que hace paso por paso
 
-1. Verifica que la ruta sea checkout.
-2. Evita crear otro slider si `.cont-carousel` ya existe.
-3. Lee `/files/product-slider.json` con `fetchJsonData`.
-4. Sale temprano si config no existe o `isActive` es `false`.
-5. Normaliza `collectionMaxItems` en `safeMaxItems`.
-6. Crea utilidades locales (`escapeHtml`, `uniqueByProductId`, etc.).
-7. Obtiene productos recomendados.
-8. Inserta contenedor y renderiza cards validas.
-9. Inicializa Slick.
-10. Asocia evento delegado para agregar al carrito.
+1. Valida ruta: solo continua si la URL corresponde a checkout.
+2. Evita duplicados: si ya existe .cont-carousel, termina.
+3. Carga configuracion desde /files/product-slider.json.
+4. Si la config no existe o isActive es false, termina.
+5. Calcula safeMaxItems a partir de collectionMaxItems con fallback 15.
+6. Define utilidades internas de datos, render y eventos.
+7. Obtiene productos recomendados (solo accesorios).
+8. Inserta el contenedor del slider en el DOM.
+9. Genera HTML de cards en memoria y lo inyecta una sola vez.
+10. Si no hay cards validas, elimina el contenedor y termina.
+11. Inicializa Slick con configuracion responsive.
+12. Activa el binding delegado de agregar al carrito.
 
-## Utilidades locales dentro de `insertCarousel`
+## Funciones internas de insertCarousel
 
-### `escapeHtml(value)`
+### escapeHtml(value)
 
-Escapa caracteres especiales (`&`, `<`, `>`, `"`, `'`) para render seguro en strings HTML.
+Responsabilidad:
 
-Se usa en:
+- Sanitizar texto dinamico antes de insertarlo en HTML armado por template strings.
 
-- nombre de producto
+Punto por punto:
+
+1. Convierte el valor a string seguro.
+2. Escapa ampersand (&) para evitar entidades invalidas.
+3. Escapa menor y mayor (< >) para bloquear etiquetas embebidas.
+4. Escapa comillas dobles para proteger atributos HTML.
+5. Escapa comillas simples para proteger atributos y texto.
+
+Donde se usa:
+
+- nombre del producto
 - marca
-- valores mostrados en `<option>`
-- atributos renderizados en el card
+- texto de options de talla
+- atributos en la card (como alt y src)
 
-### `uniqueByProductId(items)`
+### uniqueByProductId(items)
 
-Recibe un arreglo de productos y elimina duplicados por `productId`.
+Responsabilidad:
 
-Comportamiento:
+- Eliminar productos repetidos en la lista final de recomendaciones.
 
-- usa `Set` para registrar ids ya vistos
-- descarta productos sin `productId`
-- mantiene el primer elemento encontrado por id
+Punto por punto:
 
-### `getRecommendedProducts()`
+1. Crea un Set para ids vistos.
+2. Recorre cada producto.
+3. Si no tiene productId, lo descarta.
+4. Si productId ya existe en Set, lo descarta.
+5. Si es nuevo, lo agrega al Set y lo mantiene.
 
-Obtiene recomendaciones de accesorios para los productos actuales del carrito.
+### getRecommendedProducts()
 
-Pasos:
+Responsabilidad:
 
-1. Pide orderForm con `vtexjs.checkout.getOrderForm()`.
-2. Construye lista unica de `productId`.
-3. Si no hay productos en carrito, retorna `[]`.
-4. Para cada `productId`, consulta endpoint:
-	 `/api/catalog_system/pub/products/crossselling/${accessoriesType}/${productId}`
-5. Si alguna consulta falla, registra error y devuelve arreglo vacio para ese producto.
-6. Aplana resultados, deduplica y limita por `safeMaxItems`.
+- Consultar cross-selling de accesorios para los productos del carrito.
 
-### `getAvailableSkuOptions(productItems)`
+Punto por punto:
 
-Transforma SKUs de un producto en opciones utilizables por el selector de talla.
+1. Lee orderForm con vtexjs.checkout.getOrderForm().
+2. Extrae productId de cada item.
+3. Elimina ids vacios y duplicados.
+4. Si no hay ids, retorna arreglo vacio.
+5. Ejecuta consultas en paralelo (Promise.all) al endpoint de accesorios.
+6. Si una consulta falla, registra error y retorna [] para ese id.
+7. Aplana todas las respuestas.
+8. Deduplica por productId.
+9. Limita la salida por safeMaxItems.
 
-Reglas:
+Endpoint usado:
 
-- valida que `productItems` sea arreglo
-- toma `sellers[0].commertialOffer`
-- excluye SKUs sin stock (`AvailableQuantity <= 0`)
-- excluye SKUs sin `itemId`
-- devuelve objetos `{ itemId, label }`
+- /api/catalog_system/pub/products/crossselling/${accessoriesType}/${productId}
 
-Label usado:
+### getAvailableSkuOptions(productItems)
 
-- `Talla`
-- `name`
-- fallback `'Talla unica'`
+Responsabilidad:
 
-### `resolveCarouselPrice(num)`
+- Construir opciones de talla/SKU seleccionables para cada card.
 
-Normaliza y formatea precio para locale `es-CL` sin decimales.
+Punto por punto:
 
-- trunca valor con `Math.trunc`
-- usa `Intl.NumberFormat` reutilizado (`priceFormatter`)
-- fallback a `0` si valor no es numerico
+1. Verifica que productItems sea un arreglo.
+2. Recorre cada SKU del producto.
+3. Lee seller principal y commertialOffer.
+4. Descarta SKU sin stock (AvailableQuantity <= 0).
+5. Descarta SKU sin itemId.
+6. Construye opcion con itemId y label.
+7. Define label por prioridad: Talla, name, Talla unica.
+8. Retorna arreglo filtrado sin nulos.
 
-### `bindAddToCartEvents()`
+### resolveCarouselPrice(num)
 
-Asocia el click en botones `.shop` usando event delegation sobre el contenedor del slider.
+Responsabilidad:
 
-Detalles:
+- Formatear precio para mostrarlo consistente en Chile.
 
-- limpia handler previo con namespace `click.carouselAddToCart`
-- previene doble click con estado `is-loading`
-- muestra estado visual de carga en el boton
-- obtiene SKU desde:
-	- opcion seleccionada en `.talla-select`
-	- fallback `data-default-sku`
-- ejecuta `vtexjs.checkout.addToCart([item], null, 1)`
-- muestra toast de exito o error
-- restaura estado original del boton al finalizar
+Punto por punto:
 
-## Inicializacion del slider (Slick)
+1. Convierte a numero y trunca decimales.
+2. Si el valor no es valido, usa 0.
+3. Formatea con Intl.NumberFormat es-CL sin decimales.
 
-`insertCarousel` configura Slick con:
+### bindAddToCartEvents()
 
-- `dots: true`
-- `infinite: false`
-- autoplay
-- flechas personalizadas con Font Awesome
-- breakpoints para desktop/tablet/mobile
+Responsabilidad:
 
-Si no hay cards validas para renderizar, elimina `.cont-carousel` y no inicializa Slick.
+- Manejar el click de Agregar al carro con control de estado y feedback UI.
 
-## Configuracion esperada en `product-slider.json`
+Punto por punto:
 
-Campos usados actualmente:
+1. Desregistra handlers previos con namespace click.carouselAddToCart.
+2. Registra evento delegado sobre el contenedor del carousel.
+3. Si el boton ya esta cargando, evita doble accion.
+4. Limpia mensajes previos de checkout.
+5. Bloquea boton y muestra spinner.
+6. Obtiene SKU seleccionado desde .talla-select.
+7. Si no hay seleccion, usa data-default-sku.
+8. Si no hay SKU final, restaura boton y termina.
+9. Arma payload de item para addToCart.
+10. Ejecuta vtexjs.checkout.addToCart([item], null, 1).
+11. En success muestra toast de exito.
+12. En fail muestra toast de error y log de consola.
+13. En always restaura estado original del boton.
 
-- `isActive`: habilita/deshabilita el slider
-- `accessoriesType`: tipo de cross-selling (default `accessories`)
-- `collectionMaxItems`: maximo de items (default `15`)
+## Diagrama de flujo
 
-## Resultado funcional esperado
+```mermaid
+flowchart TD
+	A[Inicio insertCarousel] --> B{Ruta checkout?}
+	B -- No --> Z[Fin]
+	B -- Si --> C{Existe .cont-carousel?}
+	C -- Si --> Z
+	C -- No --> D[Cargar product-slider.json]
+	D --> E{Config valida e isActive?}
+	E -- No --> Z
+	E -- Si --> F[Obtener productos recomendados]
+	F --> G{Hay recomendaciones validas?}
+	G -- No --> H[Eliminar contenedor y finalizar]
+	H --> Z
+	G -- Si --> I[Renderizar cards]
+	I --> J[Inicializar Slick]
+	J --> K[Bind add to cart]
+	K --> Z
+```
 
-- En checkout, el slider muestra accesorios relacionados a productos del carrito.
-- Si no hay accesorios validos, no se muestra slider.
-- Cada card agrega su SKU correcto al carrito.
+## Configuracion esperada en product-slider.json
+
+- isActive: habilita o deshabilita el componente.
+- accessoriesType: tipo de cross-selling a consultar (default accessories).
+- collectionMaxItems: maximo de recomendaciones (default 15).
+
+## Limitaciones conocidas
+
+1. Dependencia de estructura VTEX Catalog:
+- Si cambian campos como sellers, commertialOffer, itemId o Talla, el render puede fallar o quedar sin opciones.
+
+2. Dependencia de endpoint de cross-selling:
+- Si la estrategia de accesorios no devuelve resultados para los items del carrito, no se muestra slider.
+
+3. Dependencia de Slick y jQuery:
+- Si slick.min.js o jQuery no estan disponibles, no hay carrusel funcional.
+
+4. Selector de talla oculto:
+- El select de SKU esta en display none; no es visible para usuario final y se usa internamente para resolver SKU.
+
+5. Uso de seller fijo en addToCart:
+- El payload usa seller: 1. Si la operacion requiere otro seller, podria no reflejar la mejor oferta.
+
+6. Orden de recomendaciones:
+- El sistema mantiene el orden devuelto por APIs y la deduplicacion por primer match, no aplica ranking adicional de negocio.
+
+7. Sin reintentos de red:
+- Ante fallas de red, solo se loguea error y se continua sin ese bloque de resultados.
+
+8. Render por string HTML:
+- Aunque escapeHtml reduce riesgo de inyeccion, la estrategia sigue siendo template-string; una migracion futura a createElement/textContent daria mayor seguridad estructural.
