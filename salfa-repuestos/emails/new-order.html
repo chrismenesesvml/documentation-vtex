@@ -340,6 +340,26 @@
                                           });
                                           "}}
 
+                                          {{eval "
+                                          Handlebars.registerHelper('hasSeller', function(orders, sellerId, options) {
+                                            if (!orders || !Array.isArray(orders)) {
+                                              return options.inverse(this);
+                                            }
+                                            for (var i = 0; i < orders.length; i++) {
+                                              var order = orders[i];
+                                              if (order && order.sellers && Array.isArray(order.sellers)) {
+                                                for (var j = 0; j < order.sellers.length; j++) {
+                                                  var seller = order.sellers[j];
+                                                  if (seller && seller.id === sellerId) {
+                                                    return options.fn(this);
+                                                  }
+                                                }
+                                              }
+                                            }
+                                            return options.inverse(this);
+                                          });
+                                          "}}
+
                                           <!-- If there is more than one seller -->
                                           {{#getDifferentSellers orders}}
                                           <!-- If there is at least one delivery -->
@@ -576,6 +596,24 @@
                                             text-align: left;"
                                             >
                                               🛍️ Importante: Podrás acercarte a retirar tu compra <strong>una vez que hayas recibido el correo de facturación.</strong>
+                                              <br>
+                                              <br>
+                                              {{#hasSeller orders "repuestos246"}}
+                                              ℹ️ Puedes realizar el seguimiento de tu pedido en cualquier momento. Recuerda tener a mano tu RUT y número de pedido:
+                                              <br>
+                                              👉 <a style="font-weight: 400;
+                                              font-style: Regular;
+                                              font-family: 'Open Sans', Arial, sans-serif;
+                                              font-size: 16px;
+                                              leading-trim: NONE;
+                                              line-height: 120%;
+                                              letter-spacing: 0%;
+                                              color: #002854;
+                                              text-align: left;"
+                                                href="https://www.salfa.cl/seguimiento-en-linea/">
+                                                [Seguimiento de compra]
+                                              </a>
+                                              {{/hasSeller}}
                                             </p>
                                             <p style="font-family: 'Open Sans', Arial, sans-serif;
                                             font-weight: 400;
