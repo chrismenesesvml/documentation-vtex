@@ -1,0 +1,549 @@
+// json de ejemplo para correos transaccionales con retiro en tienda y seller 'repuestos'
+{
+    "orders": [
+		{
+			"package": null,
+			"subjectItemAttachment": {
+				"item": "Reductor De Emisione...",
+				"totalItems": 1
+			},
+			"cancellationReason": null,
+			"paymentData": {
+				"giftCards": [],
+				"transactions": [
+					{
+						"isActive": true,
+						"transactionId": "8791A70BA1E845F09B53A9E63EAE6B44",
+						"merchantName": "SALFAREPUESTOS",
+						"payments": [
+							{
+								"id": "C9202BEEB4724861B7C0513925C00F67",
+								"paymentSystem": "30",
+								"paymentSystemName": "Webpay",
+								"value": 1475600,
+								"installments": 1,
+								"referenceValue": 1475600,
+								"cardHolder": null,
+								"cardNumber": null,
+								"firstDigits": null,
+								"lastDigits": null,
+								"cvv2": null,
+								"expireMonth": null,
+								"expireYear": null,
+								"url": null,
+								"giftCardId": null,
+								"giftCardName": null,
+								"giftCardCaption": null,
+								"redemptionCode": null,
+								"group": "webpay",
+								"tid": "109545",
+								"dueDate": null,
+								"connectorResponses": {
+									"Tid": "109545",
+									"ReturnCode": "7985",
+									"Message": "Pago autorizado por VTEX",
+									"authId": "1641650542291",
+									"nsu": "2026-06-23T12:34:01.107Z",
+									"acquirer": "SI - 3"
+								},
+								"giftCardProvider": null,
+								"giftCardAsDiscount": null,
+								"koinUrl": null,
+								"accountId": null,
+								"parentAccountId": null,
+								"bankIssuedInvoiceIdentificationNumber": null,
+								"bankIssuedInvoiceIdentificationNumberFormatted": null,
+								"bankIssuedInvoiceBarCodeNumber": null,
+								"bankIssuedInvoiceBarCodeType": null,
+								"billingAddress": null,
+								"paymentOrigin": null
+							}
+						]
+					}
+				]
+			},
+			"cancellationRequests": null,
+			"invoiceData": null,
+			"clientProfileData": {
+				"id": "clientProfileData",
+				"email": "dnavarro@salfa.cl",
+				"firstName": "Diego",
+				"lastName": "Navarro",
+				"documentType": "rutCHL",
+				"document": "160989289",
+				"phone": "+56978658723",
+				"corporateName": null,
+				"tradeName": null,
+				"corporateDocument": null,
+				"stateInscription": "",
+				"corporatePhone": null,
+				"isCorporate": false,
+				"userProfileId": "6b35b6bc-5513-4769-8096-a2da104388a3",
+				"userProfileVersion": null,
+				"customerClass": null,
+				"customerCode": null
+			},
+			"shippingData": {
+				"id": "shippingData",
+				"address": {
+					"addressType": "pickup",
+					"receiverName": "Diego Navarro",
+					"addressId": "SA01",
+					"versionId": null,
+					"entityId": null,
+					"postalCode": "8320000",
+					"city": "Santiago",
+					"state": "Región Metropolitana",
+					"country": "CHL",
+					"street": "Av. Beauchef",
+					"number": "1877",
+					"neighborhood": "Santiago",
+					"complement": "",
+					"reference": null,
+					"geoCoordinates": [
+						-70.66386,
+						-33.47077
+					]
+				},
+				"logisticsInfo": [
+					{
+						"itemIndex": 0,
+						"itemId": "5431",
+						"selectedDeliveryChannel": "pickup-in-point",
+						"selectedSla": "Retiro en Rondizzoni (SA01)",
+						"lockTTL": "10d",
+						"price": 0,
+						"listPrice": 0,
+						"sellingPrice": 0,
+						"deliveryWindow": null,
+						"deliveryCompany": "Retiro en Rondizzoni",
+						"shippingEstimate": "0bd",
+						"shippingEstimateDate": "2026-06-23T12:36:03.5225332Z",
+						"slas": [
+							{
+								"id": "Retiro en Rondizzoni (SA01)",
+								"name": "Retiro en Rondizzoni (SA01)",
+								"shippingEstimate": "0bd",
+								"shippingEstimateDate": "2026-06-23T12:36:03.5225332Z",
+								"deliveryWindow": null,
+								"availableDeliveryWindows": [],
+								"deliveryIds": [
+									{
+										"courierId": "SA01_R",
+										"courierName": "Retiro en Rondizzoni",
+										"dockId": "SA01",
+										"quantity": 1,
+										"warehouseId": "1SA0_REPT",
+										"accountCarrierName": "repuestos246",
+										"kitItemDetails": []
+									}
+								],
+								"listPrice": 0,
+								"price": 0,
+								"deliveryChannel": "pickup-in-point",
+								"pickupStoreInfo": {
+									"isPickupStore": true,
+									"friendlyName": "Rondizzoni",
+									"address": {
+										"addressType": "pickup",
+										"receiverName": null,
+										"addressId": "SA01",
+										"isDisposable": true,
+										"postalCode": "8320000",
+										"city": "Santiago",
+										"state": "Región Metropolitana",
+										"country": "CHL",
+										"street": "Av. Beauchef",
+										"number": "1877",
+										"neighborhood": "Santiago",
+										"complement": "",
+										"reference": null,
+										"geoCoordinates": [
+											-70.66386,
+											-33.47077
+										]
+									},
+									"additionalInfo": "Entregas con el número de ticket o factura",
+									"dockId": "SA01"
+								},
+								"polygonName": "",
+								"lockTTL": "10d",
+								"pickupPointId": "repuestos246_SA01",
+								"transitTime": "0bd",
+								"pickupDistance": 0
+							}
+						],
+						"shipsTo": [
+							"CHL"
+						],
+						"deliveryIds": [
+							{
+								"courierId": "SA01_R",
+								"courierName": "Retiro en Rondizzoni",
+								"dockId": "SA01",
+								"quantity": 1,
+								"warehouseId": "1SA0_REPT",
+								"accountCarrierName": "repuestos246",
+								"kitItemDetails": []
+							}
+						],
+						"deliveryChannels": [
+							{
+								"id": "delivery",
+								"stockBalance": 0
+							},
+							{
+								"id": "pickup-in-point",
+								"stockBalance": 0
+							}
+						],
+						"deliveryChannel": null,
+						"pickupStoreInfo": {
+							"isPickupStore": true,
+							"friendlyName": "Rondizzoni",
+							"address": {
+								"addressType": "pickup",
+								"receiverName": null,
+								"addressId": "SA01",
+								"isDisposable": true,
+								"postalCode": "8320000",
+								"city": "Santiago",
+								"state": "Región Metropolitana",
+								"country": "CHL",
+								"street": "Av. Beauchef",
+								"number": "1877",
+								"neighborhood": "Santiago",
+								"complement": "",
+								"reference": null,
+								"geoCoordinates": [
+									-70.66386,
+									-33.47077
+								]
+							},
+							"additionalInfo": "Entregas con el número de ticket o factura",
+							"dockId": "SA01"
+						},
+						"addressId": "SA01",
+						"versionId": null,
+						"entityId": null,
+						"polygonName": "",
+						"pickupPointId": "repuestos246_SA01",
+						"transitTime": "0bd"
+					}
+				],
+				"trackingHints": [],
+				"selectedAddresses": [
+					{
+						"addressId": "SA01",
+						"versionId": null,
+						"entityId": null,
+						"addressType": "pickup",
+						"receiverName": "Diego Navarro",
+						"street": "Av. Beauchef",
+						"number": "1877",
+						"complement": "",
+						"neighborhood": "Santiago",
+						"postalCode": "8320000",
+						"city": "Santiago",
+						"state": "Región Metropolitana",
+						"country": "CHL",
+						"reference": null,
+						"geoCoordinates": [
+							-70.66386,
+							-33.47077
+						]
+					}
+				],
+				"availableAddresses": [
+					{
+						"addressId": "SA01",
+						"versionId": null,
+						"entityId": null,
+						"addressType": "pickup",
+						"receiverName": null,
+						"street": "Av. Beauchef",
+						"number": "1877",
+						"complement": "",
+						"neighborhood": "Santiago",
+						"postalCode": "8320000",
+						"city": "Santiago",
+						"state": "Región Metropolitana",
+						"country": "CHL",
+						"reference": null,
+						"geoCoordinates": [
+							-70.66386,
+							-33.47077
+						]
+					},
+					{
+						"addressType": "residential",
+						"receiverName": "Diego Navarro",
+						"addressId": "8291745223965",
+						"isDisposable": false,
+						"postalCode": "7550000",
+						"city": null,
+						"state": "REGIÓN METROPOLITANA",
+						"country": "CHL",
+						"street": "Martín Alonso Pinzón",
+						"number": "5250",
+						"neighborhood": "Las Condes",
+						"complement": "dpto 1801",
+						"reference": null,
+						"geoCoordinates": []
+					}
+				],
+				"contactInformation": [],
+				"contactsInfo": []
+			},
+			"customData": null,
+			"purchaseAgentData": null,
+			"authorizationPolicyData": {
+				"Status": "accepted",
+				"DeniedPolicies": [],
+				"PendingPolicies": []
+			},
+			"items": [
+				{
+					"additionalInfo": {
+						"categoriesIds": "/3/20/",
+						"productClusterId": "236",
+						"commercialConditionId": "1",
+						"dimension": {
+							"cubicweight": 0.0002,
+							"height": 1,
+							"length": 1,
+							"weight": 1,
+							"width": 1
+						},
+						"brandName": "Otros Repuestos",
+						"brandId": "2000039",
+						"offeringInfo": null,
+						"offeringType": null,
+						"offeringTypeId": null
+					},
+					"sellerSku": "5431",
+					"priceTable": null,
+					"priceValidUntil": "2027-06-23T16:56:39Z",
+					"callCenterOperator": null,
+					"commission": 0,
+					"freightCommission": 0,
+					"taxCode": "",
+					"catalogProvider": "vrn:vtex.catalog-api-proxy:-:salfarepuestos:master:/proxy/authenticated/catalog/pvt/sku/stockkeepingunitbyid/5431",
+					"uniqueId": "D332E0F96059499289FE376C520C14DE",
+					"id": "5431",
+					"productId": "203080",
+					"productRefId": "",
+					"refId": "1057682",
+					"ean": null,
+					"name": "Reductor De Emisiones Diesel Bluemax (AdBlue) Copec",
+					"skuName": "Reductor De Emisiones Diesel Bluemax (AdBlue) Copec",
+					"modalType": null,
+					"parentItemIndex": null,
+					"parentAssemblyBinding": null,
+					"assemblies": [],
+					"tax": 0,
+					"price": 1475600,
+					"listPrice": 2108000,
+					"manualPrice": null,
+					"manualPriceAppliedBy": null,
+					"sellingPrice": 1475600,
+					"rewardValue": 0,
+					"isGift": false,
+					"preSaleDate": null,
+					"productCategoryIds": "/3/20/",
+					"productCategories": {
+						"3": "camiones",
+						"20": "aceites y refrigerantes"
+					},
+					"quantity": 1,
+					"seller": "repuestos246",
+					"sellerChain": [
+						"repuestos246"
+					],
+					"imageUrl": "https://salfarepuestos.vteximg.com.br/arquivos/ids/167010-100-100/image-cd6fbaf8e6884a73924a0a451cc86051.jpg?v=639040842014730000",
+					"detailUrl": "/reductor-de-emisiones-diesel-bluemax-copec-203080/p",
+					"components": [],
+					"bundleItems": [],
+					"attachments": [],
+					"attachmentOfferings": [],
+					"offerings": [],
+					"priceTags": [],
+					"availability": "available",
+					"measurementUnit": "un",
+					"unitMultiplier": 1,
+					"manufacturerCode": null,
+					"priceDefinition": {
+						"calculatedSellingPrice": 1475600,
+						"total": 1475600,
+						"sellingPrices": [
+							{
+								"value": 1475600,
+								"quantity": 1
+							}
+						]
+					}
+				}
+			],
+			"sellers": [
+				{
+					"subSellerId": "1",
+					"fulfillmentEndpoint": "http://fulfillment.vtexcommerce.com.br/api/fulfillment?an=repuestos246&affiliateId=RPC&sc=1",
+					"id": "repuestos246",
+					"name": "Salfa Repuestos",
+					"logo": ""
+				}
+			],
+			"giftRegistryData": null,
+			"receiptData": null,
+			"contextData": null,
+			"marketPlaceOrderId": "",
+			"marketPlaceOrderGroup": null,
+			"marketplaceServicesEndpoint": null,
+			"orderFormId": "0547346e30984ede894b6ed6b59c8f57",
+			"sequence": "542291",
+			"affiliateId": "",
+			"status": "",
+			"callCenterOperator": "",
+			"userProfileId": "6b35b6bc-5513-4769-8096-a2da104388a3",
+			"hostName": "salfarepuestos",
+			"creationVersion": null,
+			"creationEnvironment": null,
+			"lastChangeVersion": null,
+			"workflowInstanceId": null,
+			"marketplacePaymentValue": null,
+			"orderId": "1641650542291-01",
+			"orderGroup": "1641650542291",
+			"state": "payment-approved",
+			"isCheckedIn": false,
+			"sellerOrderId": "RPC-1641650542291-01",
+			"storeId": null,
+			"checkedInPickupPointId": null,
+			"value": 1475600,
+			"totals": [
+				{
+					"id": "Items",
+					"name": "Total de los items",
+					"value": 1475600
+				},
+				{
+					"id": "Discounts",
+					"name": "Total de descuentos",
+					"value": 0
+				},
+				{
+					"id": "Shipping",
+					"name": "Costo total del envío",
+					"value": 0
+				},
+				{
+					"id": "Tax",
+					"name": "Costo total de impuestos",
+					"value": 0
+				}
+			],
+			"ratesAndBenefitsData": {
+				"rateAndBenefitsIdentifiers": [],
+				"teaser": []
+			},
+			"clientPreferencesData": {
+				"locale": "es-CL",
+				"optinNewsLetter": false
+			},
+			"commercialConditionData": null,
+			"marketingData": null,
+			"storePreferencesData": {
+				"countryCode": "CHL",
+				"saveUserData": true,
+				"timeZone": "Pacific SA Standard Time",
+				"currencyCode": "CLP",
+				"currencyLocale": 13322,
+				"currencySymbol": "$",
+				"currencyFormatInfo": {
+					"currencyDecimalDigits": 0,
+					"currencyDecimalSeparator": ",",
+					"currencyGroupSeparator": ".",
+					"currencyGroupSize": 3,
+					"startsWithCurrencySymbol": true
+				}
+			},
+			"openTextField": {
+				"value": "dnavarro@salfa.cl"
+			},
+			"itemMetadata": {
+				"items": [
+					{
+						"id": "5431",
+						"seller": "repuestos246",
+						"name": "Reductor De Emisiones Diesel Bluemax (AdBlue) Copec",
+						"skuName": "Reductor De Emisiones Diesel Bluemax (AdBlue) Copec",
+						"productId": "203080",
+						"refId": "1057682",
+						"ean": null,
+						"imageUrl": "https://salfarepuestos.vteximg.com.br/arquivos/ids/167010-100-100/image-cd6fbaf8e6884a73924a0a451cc86051.jpg?v=639040842014730000",
+						"detailUrl": "/reductor-de-emisiones-diesel-bluemax-copec-203080/p",
+						"assemblyOptions": []
+					}
+				]
+			},
+			"taxData": null,
+			"hooksData": null,
+			"changeData": null,
+			"subscriptionData": null,
+			"salesChannel": "1",
+			"followUpEmail": "dnavarro@salfa.cl",
+			"creationDate": "2026-06-23T12:33:54.7904179Z",
+			"lastChange": "2026-06-23T12:36:03.8375239Z",
+			"timeZoneCreationDate": "2026-06-23T08:33:54.7904179",
+			"timeZoneLastChange": "2026-06-23T08:36:03.8375239",
+			"isCompleted": true,
+			"merchantName": null,
+			"userType": "",
+			"roundingError": 0,
+			"allowEdition": false,
+			"allowCancellation": false,
+			"isUserDataVisible": false,
+			"allowChangeSeller": false
+		}
+	],
+	"ordersUrl": "http://www.tiendasalfa.cl/account#/orders",
+	"orderGroup": "1641650542291",
+	"subjectItemAttachment": {
+		"item": "Reductor De Emisione...",
+		"totalItems": 1
+	},
+	"split": false,
+	"totalValue": 1475600,
+	"callCenterOperatorData": null,
+	"_accountInfo": {
+		"MainAccountName": "salfarepuestos",
+		"AccountName": "salfarepuestos",
+		"Cnpj": "915020003",
+		"Id": "f99e2fd3-dfea-4d0e-9bd6-d26cb79bdb5e",
+		"AppId": null,
+		"IsActive": true,
+		"IsOperating": true,
+		"CreationDate": "2022-02-14T14:24:15.9644381Z",
+		"OperationDate": "2022-07-19T16:53:16.509305+00:00",
+		"CompanyName": "Salfa Repuestos",
+		"TradingName": "Tienda Salfa",
+		"City": null,
+		"Complement": null,
+		"Country": null,
+		"State": null,
+		"Address": null,
+		"District": null,
+		"Number": null,
+		"PostalCode": null,
+		"Licenses": [
+			7
+		],
+		"ParentAccountId": null,
+		"ParentAccountName": null,
+		"InactivationDate": null,
+		"Platform": "vtex",
+		"Privacy": null,
+		"HasPiiRestriction": false,
+		"Infra": null,
+		"Sponsor": "6b35b6bc-5513-4769-8096-a2da104388a3"
+	}
+}
