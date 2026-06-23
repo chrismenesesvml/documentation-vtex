@@ -1,0 +1,482 @@
+// json de ejemplo de data para correos transaccionales de tienda salfa
+{
+	"orders": [
+		{
+			"package": null,
+			"subjectItemAttachment": {
+				"item": "Reductor De Emisione...",
+				"totalItems": 1
+			},
+			"cancellationReason": null,
+			"paymentData": {
+				"giftCards": [],
+				"transactions": [
+					{
+						"isActive": true,
+						"transactionId": "8791A70BA1E845F09B53A9E63EAE6B44",
+						"merchantName": "S*************",
+						"payments": [
+							{
+								"id": "C9202BEEB4724861B7C0513925C00F67",
+								"paymentSystem": "30",
+								"paymentSystemName": "W*****",
+								"value": 1874600,
+								"installments": 1,
+								"referenceValue": 1874600,
+								"cardHolder": null,
+								"cardNumber": null,
+								"firstDigits": null,
+								"lastDigits": null,
+								"cvv2": null,
+								"expireMonth": null,
+								"expireYear": null,
+								"url": null,
+								"giftCardId": null,
+								"giftCardName": null,
+								"giftCardCaption": null,
+								"redemptionCode": null,
+								"group": "webpay",
+								"tid": "109545",
+								"dueDate": null,
+								"connectorResponses": {
+									"Tid": "109545",
+									"ReturnCode": "7985",
+									"Message": "Pago autorizado por VTEX",
+									"authId": "1641650542291",
+									"nsu": "2026-06-23T12:34:01.107Z",
+									"acquirer": "SI - 3"
+								},
+								"giftCardProvider": null,
+								"giftCardAsDiscount": null,
+								"koinUrl": null,
+								"accountId": null,
+								"parentAccountId": null,
+								"bankIssuedInvoiceIdentificationNumber": null,
+								"bankIssuedInvoiceIdentificationNumberFormatted": null,
+								"bankIssuedInvoiceBarCodeNumber": null,
+								"bankIssuedInvoiceBarCodeType": null,
+								"billingAddress": null,
+								"paymentOrigin": null
+							}
+						]
+					}
+				]
+			},
+			"cancellationRequests": null,
+			"invoiceData": null,
+			"clientProfileData": {
+				"id": "clientProfileData",
+				"email": "j*****.f*****.l*@g****.c****************.c*.v***.c**.b*",
+				"firstName": "J*****",
+				"lastName": "F*****",
+				"documentType": "rutCHL",
+				"document": "1********",
+				"phone": "+5**********",
+				"corporateName": null,
+				"tradeName": null,
+				"corporateDocument": null,
+				"stateInscription": "",
+				"corporatePhone": null,
+				"isCorporate": false,
+				"userProfileId": "912b999a-cbe7-4694-89a4-0fa6d8bd75e4",
+				"userProfileVersion": null,
+				"customerClass": null,
+				"customerCode": null
+			},
+			"shippingData": {
+				"id": "shippingData",
+				"address": {
+					"addressType": "residential",
+					"receiverName": "J***** F*****",
+					"addressId": "8911084353515",
+					"versionId": null,
+					"entityId": null,
+					"postalCode": "8******",
+					"city": null,
+					"state": "Región Metropolitana",
+					"country": "CHL",
+					"street": "D* R*** d*****",
+					"number": "2***",
+					"neighborhood": "Q***** N*****",
+					"complement": null,
+					"reference": null,
+					"geoCoordinates": [
+						-51.4779552,
+						-0.0039779
+					]
+				},
+				"logisticsInfo": [
+					{
+						"itemIndex": 0,
+						"itemId": "5431",
+						"selectedDeliveryChannel": "delivery",
+						"selectedSla": "Despacho desde Santiago Casa Matriz",
+						"lockTTL": "10d",
+						"price": 399000,
+						"listPrice": 399000,
+						"sellingPrice": 399000,
+						"deliveryWindow": null,
+						"deliveryCompany": null,
+						"shippingEstimate": "0bd",
+						"shippingEstimateDate": "2026-06-23T12:36:03.5225332Z",
+						"slas": [
+							{
+								"id": "Despacho desde Santiago Casa Matriz",
+								"name": "D**********************************",
+								"shippingEstimate": "0bd",
+								"shippingEstimateDate": "2026-06-23T12:36:03.5225332Z",
+								"deliveryWindow": null,
+								"availableDeliveryWindows": [],
+								"deliveryIds": [
+									{
+										"courierId": "SA01",
+										"courierName": "D**********************************",
+										"dockId": "SA01",
+										"quantity": 1,
+										"warehouseId": "1SA0_REPT",
+										"accountCarrierName": "r***********",
+										"kitItemDetails": []
+									}
+								],
+								"listPrice": 399000,
+								"price": 399000,
+								"deliveryChannel": "delivery",
+								"pickupStoreInfo": {
+									"additionalInfo": null,
+									"address": null,
+									"dockId": null,
+									"friendlyName": null,
+									"isPickupStore": false
+								},
+								"polygonName": "",
+								"lockTTL": "10d",
+								"pickupPointId": null,
+								"transitTime": "0bd",
+								"pickupDistance": null
+							}
+						],
+						"shipsTo": [
+							"CHL"
+						],
+						"deliveryIds": [
+							{
+								"courierId": "SA01",
+								"courierName": "D**********************************",
+								"dockId": "SA01",
+								"quantity": 1,
+								"warehouseId": "1SA0_REPT",
+								"accountCarrierName": "r***********",
+								"kitItemDetails": []
+							}
+						],
+						"deliveryChannels": [
+							{
+								"id": "delivery",
+								"stockBalance": 0
+							},
+							{
+								"id": "pickup-in-point",
+								"stockBalance": 0
+							}
+						],
+						"deliveryChannel": null,
+						"pickupStoreInfo": {
+							"additionalInfo": null,
+							"address": null,
+							"dockId": null,
+							"friendlyName": null,
+							"isPickupStore": false
+						},
+						"addressId": "8911084353515",
+						"versionId": null,
+						"entityId": null,
+						"polygonName": "",
+						"pickupPointId": null,
+						"transitTime": "0bd"
+					}
+				],
+				"trackingHints": [],
+				"selectedAddresses": [
+					{
+						"addressId": "8911084353515",
+						"versionId": null,
+						"entityId": null,
+						"addressType": "residential",
+						"receiverName": "J***** F*****",
+						"street": "D* R*** d*****",
+						"number": "2***",
+						"complement": null,
+						"neighborhood": "Q***** N*****",
+						"postalCode": "8******",
+						"city": null,
+						"state": "Región Metropolitana",
+						"country": "CHL",
+						"reference": null,
+						"geoCoordinates": [
+							-51.4779552,
+							-0.0039779
+						]
+					}
+				],
+				"availableAddresses": [
+					{
+						"addressId": "8911084353515",
+						"versionId": null,
+						"entityId": null,
+						"addressType": "residential",
+						"receiverName": "J***** F*****",
+						"street": "D* R*** d*****",
+						"number": "2***",
+						"complement": null,
+						"neighborhood": "Q***** N*****",
+						"postalCode": "8******",
+						"city": null,
+						"state": "Región Metropolitana",
+						"country": "CHL",
+						"reference": null,
+						"geoCoordinates": [
+							-51.4779552,
+							-0.0039779
+						]
+					}
+				],
+				"contactInformation": [],
+				"contactsInfo": []
+			},
+			"customData": null,
+			"purchaseAgentData": null,
+			"authorizationPolicyData": {
+				"Status": "accepted",
+				"DeniedPolicies": [],
+				"PendingPolicies": []
+			},
+			"items": [
+				{
+					"additionalInfo": {
+						"categoriesIds": "/3/20/",
+						"productClusterId": "236",
+						"commercialConditionId": "1",
+						"dimension": {
+							"cubicweight": 0.0002,
+							"height": 1,
+							"length": 1,
+							"weight": 1,
+							"width": 1
+						},
+						"brandName": "O**************",
+						"brandId": "2000039",
+						"offeringInfo": null,
+						"offeringType": null,
+						"offeringTypeId": null
+					},
+					"sellerSku": "5279",
+					"priceTable": null,
+					"priceValidUntil": "2027-06-23T12:28:56Z",
+					"callCenterOperator": null,
+					"commission": 0,
+					"freightCommission": 0,
+					"taxCode": "",
+					"catalogProvider": "vrn:vtex.catalog-api-proxy:-:salfarepuestos:master:/proxy/authenticated/catalog/pvt/sku/stockkeepingunitbyid/5431",
+					"uniqueId": "06AA1B74399345FBB68868E3F3D06246",
+					"id": "5431",
+					"productId": "203080",
+					"productRefId": "",
+					"refId": "1057682",
+					"ean": null,
+					"name": "R**************************************************",
+					"skuName": "R**************************************************",
+					"modalType": null,
+					"parentItemIndex": null,
+					"parentAssemblyBinding": null,
+					"assemblies": [],
+					"tax": 0,
+					"price": 1475600,
+					"listPrice": 2108000,
+					"manualPrice": null,
+					"manualPriceAppliedBy": null,
+					"sellingPrice": 1475600,
+					"rewardValue": 0,
+					"isGift": false,
+					"preSaleDate": null,
+					"productCategoryIds": "/3/20/",
+					"productCategories": {
+						"3": "camiones",
+						"20": "aceites y refrigerantes"
+					},
+					"quantity": 1,
+					"seller": "repuestos246",
+					"sellerChain": [
+						"repuestos246"
+					],
+					"imageUrl": "https://salfarepuestos.vteximg.com.br/arquivos/ids/167010-100-100/image-cd6fbaf8e6884a73924a0a451cc86051.jpg?v=639040842014730000",
+					"detailUrl": "/reductor-de-emisiones-diesel-bluemax-copec-203080/p",
+					"components": [],
+					"bundleItems": [],
+					"attachments": [],
+					"attachmentOfferings": [],
+					"offerings": [],
+					"priceTags": [],
+					"availability": "available",
+					"measurementUnit": "un",
+					"unitMultiplier": 1,
+					"manufacturerCode": null,
+					"priceDefinition": {
+						"calculatedSellingPrice": 1475600,
+						"total": 1475600,
+						"sellingPrices": [
+							{
+								"value": 1475600,
+								"quantity": 1
+							}
+						]
+					}
+				}
+			],
+			"sellers": [
+				{
+					"subSellerId": "1",
+					"fulfillmentEndpoint": "http://fulfillment.vtexcommerce.com.br/api/fulfillment?an=repuestos246&affiliateId=RPC&sc=1",
+					"id": "repuestos246",
+					"name": "S**************",
+					"logo": ""
+				}
+			],
+			"giftRegistryData": null,
+			"receiptData": null,
+			"contextData": null,
+			"marketPlaceOrderId": "",
+			"marketPlaceOrderGroup": null,
+			"marketplaceServicesEndpoint": null,
+			"orderFormId": "20544f7ab7cb4e6295366b4c8f862026",
+			"sequence": "542291",
+			"affiliateId": "",
+			"status": "",
+			"callCenterOperator": "",
+			"userProfileId": "912b999a-cbe7-4694-89a4-0fa6d8bd75e4",
+			"hostName": "s*************",
+			"creationVersion": null,
+			"creationEnvironment": null,
+			"lastChangeVersion": null,
+			"workflowInstanceId": null,
+			"marketplacePaymentValue": null,
+			"orderId": "1641650542291-01",
+			"orderGroup": "1641650542291",
+			"state": "payment-approved",
+			"isCheckedIn": false,
+			"sellerOrderId": "RPC-1641650542291-01",
+			"storeId": null,
+			"checkedInPickupPointId": null,
+			"value": 1874600,
+			"totals": [
+				{
+					"id": "Items",
+					"name": "T*****************",
+					"value": 1475600
+				},
+				{
+					"id": "Discounts",
+					"name": "T******************",
+					"value": 0
+				},
+				{
+					"id": "Shipping",
+					"name": "C********************",
+					"value": 399000
+				},
+				{
+					"id": "Tax",
+					"name": "C*********************",
+					"value": 0
+				}
+			],
+			"ratesAndBenefitsData": {
+				"rateAndBenefitsIdentifiers": [],
+				"teaser": []
+			},
+			"clientPreferencesData": {
+				"locale": "es-CL",
+				"optinNewsLetter": false
+			},
+			"commercialConditionData": null,
+			"marketingData": null,
+			"storePreferencesData": {
+				"countryCode": "CHL",
+				"saveUserData": false,
+				"timeZone": "Pacific SA Standard Time",
+				"currencyCode": "CLP",
+				"currencyLocale": 13322,
+				"currencySymbol": "$",
+				"currencyFormatInfo": {
+					"currencyDecimalDigits": 0,
+					"currencyDecimalSeparator": ",",
+					"currencyGroupSeparator": ".",
+					"currencyGroupSize": 3,
+					"startsWithCurrencySymbol": true
+				}
+			},
+			"openTextField": {
+				"value": "j*************************"
+			},
+			"itemMetadata": null,
+			"taxData": null,
+			"hooksData": null,
+			"changeData": null,
+			"subscriptionData": null,
+			"salesChannel": "1",
+			"followUpEmail": "1**********************************.v***.c**.b*",
+			"creationDate": "2026-06-23T12:33:54.7904179Z",
+			"lastChange": "2026-06-23T12:36:03.8375239Z",
+			"timeZoneCreationDate": "2026-06-23T08:33:54.7904179",
+			"timeZoneLastChange": "2026-06-23T08:36:03.8375239",
+			"isCompleted": true,
+			"merchantName": null,
+			"userType": "",
+			"roundingError": 0,
+			"allowEdition": false,
+			"allowCancellation": false,
+			"isUserDataVisible": false,
+			"allowChangeSeller": false
+		}
+	],
+	"ordersUrl": "http://www.tiendasalfa.cl/account#/orders",
+	"orderGroup": "1641650542291",
+	"subjectItemAttachment": {
+		"item": "Reductor De Emisione...",
+		"totalItems": 1
+	},
+	"split": false,
+	"totalValue": 1874600,
+	"callCenterOperatorData": null,
+	"_accountInfo": {
+		"MainAccountName": "s*************",
+		"AccountName": "s*************",
+		"Cnpj": "915020003",
+		"Id": "f99e2fd3-dfea-4d0e-9bd6-d26cb79bdb5e",
+		"AppId": null,
+		"IsActive": true,
+		"IsOperating": true,
+		"CreationDate": "2022-02-14T14:24:15.9644381Z",
+		"OperationDate": "2022-07-19T16:53:16.509305+00:00",
+		"CompanyName": "S********************",
+		"TradingName": "T***********",
+		"City": null,
+		"Complement": null,
+		"Country": null,
+		"State": null,
+		"Address": null,
+		"District": null,
+		"Number": null,
+		"PostalCode": null,
+		"Licenses": [
+			7
+		],
+		"ParentAccountId": null,
+		"ParentAccountName": null,
+		"InactivationDate": null,
+		"Platform": "vtex",
+		"Privacy": null,
+		"HasPiiRestriction": false,
+		"Infra": null,
+		"Sponsor": "6b35b6bc-5513-4769-8096-a2da104388a3"
+	}
+}
