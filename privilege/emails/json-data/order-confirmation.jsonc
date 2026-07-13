@@ -1,0 +1,533 @@
+// confirmación de orden con pickup point
+
+{
+  "package": null,
+  "subjectItemAttachment": {
+    "item": "Vestido estampado PET...",
+    "totalItems": 1,
+    "extraItems": 0
+  },
+  "cancellationReason": null,
+  "paymentData": {
+    "giftCards": [],
+    "transactions": [
+      {
+        "isActive": true,
+        "transactionId": "767C7700E79E47E69C525157E70139F2",
+        "merchantName": "P********",
+        "payments": [
+          {
+            "id": "D38203DDB8D8413D89D99859A7A4F5B1",
+            "paymentSystem": "202",
+            "paymentSystemName": "T****************",
+            "value": 4999000,
+            "installments": 1,
+            "referenceValue": 4999000,
+            "cardHolder": null,
+            "cardNumber": null,
+            "firstDigits": null,
+            "lastDigits": null,
+            "cvv2": null,
+            "expireMonth": null,
+            "expireYear": null,
+            "url": null,
+            "giftCardId": null,
+            "giftCardName": null,
+            "giftCardCaption": null,
+            "redemptionCode": null,
+            "group": "promissory",
+            "tid": "50016107",
+            "dueDate": null,
+            "connectorResponses": {
+              "Tid": "50016107",
+              "ReturnCode": null,
+              "Message": null,
+              "authId": "D38203DDB8D8413D89D99859A7A4F5B1"
+            },
+            "giftCardProvider": null,
+            "giftCardAsDiscount": null,
+            "koinUrl": null,
+            "accountId": null,
+            "parentAccountId": null,
+            "bankIssuedInvoiceIdentificationNumber": null,
+            "bankIssuedInvoiceIdentificationNumberFormatted": null,
+            "bankIssuedInvoiceBarCodeNumber": null,
+            "bankIssuedInvoiceBarCodeType": null,
+            "billingAddress": null,
+            "paymentOrigin": null
+          }
+        ]
+      }
+    ]
+  },
+  "cancellationRequests": null,
+  "invoiceData": null,
+  "clientProfileData": {
+    "id": "clientProfileData",
+    "email": "n*****************@g****.c****************.c*.v***.c**.b*",
+    "firstName": "N******",
+    "lastName": "V******",
+    "documentType": "rutCHL",
+    "document": "9*******",
+    "phone": "+5**********",
+    "corporateName": null,
+    "tradeName": null,
+    "corporateDocument": null,
+    "stateInscription": null,
+    "corporatePhone": null,
+    "isCorporate": false,
+    "userProfileId": "6f80925d-d3d4-46b5-99b1-152b1935e5ab",
+    "userProfileVersion": null,
+    "customerClass": null,
+    "customerCode": null
+  },
+  "shippingData": {
+    "id": "shippingData",
+    "address": {
+      "addressType": "search",
+      "receiverName": "N****** V******",
+      "addressId": "12",
+      "versionId": null,
+      "entityId": null,
+      "postalCode": "8700000",
+      "city": "Santiago",
+      "state": "Región Metropolitana",
+      "country": "CHL",
+      "street": "San Ignacio 500",
+      "number": "Modulo 12",
+      "neighborhood": "Quilicura",
+      "complement": "22 690 9593",
+      "reference": null,
+      "geoCoordinates": [
+        -70.70816,
+        -33.33161
+      ]
+    },
+    "logisticsInfo": [
+      {
+        "itemIndex": 0,
+        "itemId": "9218",
+        "selectedDeliveryChannel": "pickup-in-point",
+        "selectedSla": "Retiro (12)",
+        "lockTTL": null,
+        "price": 0,
+        "listPrice": 0,
+        "sellingPrice": 0,
+        "deliveryWindow": {
+          "startDateUtc": "2026-07-17T09:00:00+00:00",
+          "endDateUtc": "2026-07-17T18:00:59+00:00",
+          "price": 0
+        },
+        "deliveryCompany": null,
+        "shippingEstimate": "0bd",
+        "shippingEstimateDate": "2026-07-13T16:58:00-04:00",
+        "slas": [
+          {
+            "id": "Retiro (12)",
+            "name": "Retiro (12)",
+            "shippingEstimate": "0bd",
+            "shippingEstimateDate": "2026-07-13T16:58:00-04:00",
+            "deliveryWindow": {
+              "startDateUtc": "2026-07-17T09:00:00+00:00",
+              "endDateUtc": "2026-07-17T18:00:59+00:00",
+              "price": 0
+            },
+            "availableDeliveryWindows": [],
+            "deliveryIds": [
+              {
+                "courierId": "Retiro",
+                "courierName": "Retiro",
+                "dockId": "1",
+                "quantity": 1,
+                "warehouseId": "32",
+                "accountCarrierName": "p********",
+                "kitItemDetails": []
+              }
+            ],
+            "listPrice": 0,
+            "price": 0,
+            "deliveryChannel": "pickup-in-point",
+            "pickupStoreInfo": {
+              "additionalInfo": "Trae tu número de boleta para retirar el pedido.",
+              "address": {
+                "addressType": "pickup",
+                "receiverName": null,
+                "addressId": "12",
+                "isDisposable": true,
+                "postalCode": "8700000",
+                "city": "Santiago",
+                "state": "Región Metropolitana",
+                "country": "CHL",
+                "street": "San Ignacio 500",
+                "number": "Modulo 12",
+                "neighborhood": "Quilicura",
+                "complement": "22 690 9593",
+                "reference": null,
+                "geoCoordinates": [
+                  -70.70816,
+                  -33.33161
+                ]
+              },
+              "dockId": "1",
+              "friendlyName": "Arauco Outlet Buenaventura",
+              "isPickupStore": true
+            },
+            "polygonName": "",
+            "lockTTL": null,
+            "pickupPointId": "1_12",
+            "transitTime": "0bd",
+            "pickupDistance": 0
+          }
+        ],
+        "shipsTo": [
+          "CHL"
+        ],
+        "deliveryIds": [
+          {
+            "courierId": "Retiro",
+            "courierName": "Retiro",
+            "dockId": "1",
+            "quantity": 1,
+            "warehouseId": "32",
+            "accountCarrierName": "p********",
+            "kitItemDetails": []
+          }
+        ],
+        "deliveryChannels": [
+          {
+            "id": "delivery",
+            "stockBalance": 0
+          },
+          {
+            "id": "pickup-in-point",
+            "stockBalance": 0
+          }
+        ],
+        "deliveryChannel": null,
+        "pickupStoreInfo": {
+          "additionalInfo": "Trae tu número de boleta para retirar el pedido.",
+          "address": {
+            "addressType": "pickup",
+            "receiverName": null,
+            "addressId": "12",
+            "isDisposable": true,
+            "postalCode": "8700000",
+            "city": "Santiago",
+            "state": "Región Metropolitana",
+            "country": "CHL",
+            "street": "San Ignacio 500",
+            "number": "Modulo 12",
+            "neighborhood": "Quilicura",
+            "complement": "22 690 9593",
+            "reference": null,
+            "geoCoordinates": [
+              -70.70816,
+              -33.33161
+            ]
+          },
+          "dockId": "1",
+          "friendlyName": "Arauco Outlet Buenaventura",
+          "isPickupStore": true
+        },
+        "addressId": "12",
+        "versionId": null,
+        "entityId": null,
+        "polygonName": "",
+        "pickupPointId": "1_12",
+        "transitTime": "0bd"
+      }
+    ],
+    "trackingHints": [],
+    "selectedAddresses": [
+      {
+        "addressId": "12",
+        "versionId": null,
+        "entityId": null,
+        "addressType": "search",
+        "receiverName": "N****** V******",
+        "street": "San Ignacio 500",
+        "number": "Modulo 12",
+        "complement": "22 690 9593",
+        "neighborhood": "Quilicura",
+        "postalCode": "8700000",
+        "city": "Santiago",
+        "state": "Región Metropolitana",
+        "country": "CHL",
+        "reference": null,
+        "geoCoordinates": [
+          -70.70816,
+          -33.33161
+        ]
+      }
+    ],
+    "availableAddresses": [
+      {
+        "addressId": "12",
+        "versionId": null,
+        "entityId": null,
+        "addressType": "search",
+        "receiverName": "N****** V******",
+        "street": "San Ignacio 500",
+        "number": "Modulo 12",
+        "complement": "22 690 9593",
+        "neighborhood": "Quilicura",
+        "postalCode": "8700000",
+        "city": "Santiago",
+        "state": "Región Metropolitana",
+        "country": "CHL",
+        "reference": null,
+        "geoCoordinates": [
+          -70.70816,
+          -33.33161
+        ]
+      }
+    ],
+    "contactInformation": [],
+    "contactsInfo": []
+  },
+  "customData": {
+    "customApps": [
+      {
+        "fields": {
+          "cuotas": "6"
+        },
+        "id": "payment",
+        "major": 1
+      }
+    ],
+    "customFields": []
+  },
+  "purchaseAgentData": null,
+  "authorizationPolicyData": {
+    "Status": "accepted",
+    "DeniedPolicies": [],
+    "PendingPolicies": []
+  },
+  "items": [
+    {
+      "additionalInfo": {
+        "categoriesIds": "/3/14/",
+        "productClusterId": "203",
+        "commercialConditionId": "1",
+        "dimension": {
+          "cubicweight": 0.9375,
+          "height": 3,
+          "length": 50,
+          "weight": 450,
+          "width": 30
+        },
+        "brandName": "Privilege",
+        "brandId": "2000000",
+        "offeringInfo": null,
+        "offeringType": null,
+        "offeringTypeId": null
+      },
+      "sellerSku": "9218",
+      "priceTable": null,
+      "priceValidUntil": "2027-07-13T20:58:20Z",
+      "callCenterOperator": null,
+      "commission": 0,
+      "freightCommission": 0,
+      "taxCode": "",
+      "catalogProvider": "vrn:vtex.catalog-api-proxy:-:privilege:master:/proxy/authenticated/catalog/pvt/sku/stockkeepingunitbyid/9218",
+      "uniqueId": "8BEA48D8404A47F5B329E56C54615E39",
+      "id": "9218",
+      "productId": "2603",
+      "productRefId": "0701785-340",
+      "refId": "0701785360340",
+      "ean": "0701785360340",
+      "name": "Vestido estampado PETROLEO - 36",
+      "skuName": "PETROLEO - 36",
+      "modalType": null,
+      "parentItemIndex": null,
+      "parentAssemblyBinding": null,
+      "assemblies": [],
+      "tax": 0,
+      "price": 4999000,
+      "listPrice": 6999000,
+      "manualPrice": null,
+      "manualPriceAppliedBy": null,
+      "sellingPrice": 4999000,
+      "rewardValue": 0,
+      "isGift": false,
+      "preSaleDate": null,
+      "productCategoryIds": "/3/14/",
+      "productCategories": {
+        "14": "Vestidos y Enteritos",
+        "3": "Vestuario"
+      },
+      "quantity": 1,
+      "seller": "1",
+      "sellerChain": [
+        "1"
+      ],
+      "imageUrl": "https://privilege.vteximg.com.br/arquivos/ids/199466-100-150/0701785_340_1.jpg?v=638790441710030000",
+      "detailUrl": "/0701785-340-vestido-estampado/p",
+      "components": [],
+      "bundleItems": [],
+      "attachments": [],
+      "attachmentOfferings": [],
+      "offerings": [],
+      "priceTags": [],
+      "availability": "available",
+      "measurementUnit": "un",
+      "unitMultiplier": 1,
+      "manufacturerCode": null,
+      "priceDefinition": {
+        "calculatedSellingPrice": 4999000,
+        "total": 4999000,
+        "sellingPrices": [
+          {
+            "value": 4999000,
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  ],
+  "sellers": [
+    {
+      "subSellerId": "1",
+      "fulfillmentEndpoint": "http://fulfillment.vtexcommerce.com.br/api/fulfillment?an=privilege",
+      "id": "1",
+      "name": "P**************",
+      "logo": null
+    }
+  ],
+  "giftRegistryData": null,
+  "receiptData": null,
+  "contextData": null,
+  "marketPlaceOrderId": "",
+  "marketPlaceOrderGroup": null,
+  "marketplaceServicesEndpoint": null,
+  "orderFormId": "9b250387007742b885b2165183d6d3af",
+  "sequence": "592438",
+  "affiliateId": "",
+  "status": "",
+  "callCenterOperator": "",
+  "userProfileId": "6f80925d-d3d4-46b5-99b1-152b1935e5ab",
+  "hostName": "p********",
+  "creationVersion": null,
+  "creationEnvironment": null,
+  "lastChangeVersion": null,
+  "workflowInstanceId": null,
+  "marketplacePaymentValue": null,
+  "orderId": "1646510592438-01",
+  "orderGroup": "1646510592438",
+  "state": "payment-approved",
+  "isCheckedIn": false,
+  "sellerOrderId": "00-1646510592438-01",
+  "storeId": null,
+  "checkedInPickupPointId": null,
+  "value": 4999000,
+  "totals": [
+    {
+      "id": "Items",
+      "name": "T*****************",
+      "value": 4999000
+    },
+    {
+      "id": "Discounts",
+      "name": "T******************",
+      "value": 0
+    },
+    {
+      "id": "Shipping",
+      "name": "C********************",
+      "value": 0
+    },
+    {
+      "id": "Tax",
+      "name": "C*********************",
+      "value": 0
+    }
+  ],
+  "ratesAndBenefitsData": {
+    "rateAndBenefitsIdentifiers": [],
+    "teaser": []
+  },
+  "clientPreferencesData": {
+    "locale": "es-CL",
+    "optinNewsLetter": true
+  },
+  "commercialConditionData": null,
+  "marketingData": {
+    "utmSource": "google",
+    "utmMedium": "search",
+    "utmCampaign": "creato_aobrand",
+    "utmipage": "",
+    "utmiPart": "",
+    "utmiCampaign": "",
+    "coupon": null,
+    "marketingTags": []
+  },
+  "storePreferencesData": {
+    "countryCode": "CHL",
+    "saveUserData": false,
+    "timeZone": "Pacific SA Standard Time",
+    "currencyCode": "CLP",
+    "currencyLocale": 13322,
+    "currencySymbol": "$",
+    "currencyFormatInfo": {
+      "currencyDecimalDigits": 0,
+      "currencyDecimalSeparator": ",",
+      "currencyGroupSeparator": ".",
+      "currencyGroupSize": 3,
+      "startsWithCurrencySymbol": true
+    }
+  },
+  "openTextField": {
+    "value": "C****** 6"
+  },
+  "itemMetadata": null,
+  "taxData": null,
+  "hooksData": null,
+  "changeData": null,
+  "subscriptionData": null,
+  "salesChannel": "1",
+  "followUpEmail": "c**********************************.v***.c**.b*",
+  "creationDate": "2026-07-13T19:27:39.4114981Z",
+  "lastChange": "2026-07-13T19:28:53.410357Z",
+  "timeZoneCreationDate": "2026-07-13T15:27:39.4114981",
+  "timeZoneLastChange": "2026-07-13T15:28:53.410357",
+  "isCompleted": true,
+  "merchantName": null,
+  "userType": "",
+  "roundingError": 0,
+  "allowEdition": false,
+  "allowCancellation": false,
+  "isUserDataVisible": false,
+  "allowChangeSeller": false,
+  "_accountInfo": {
+    "MainAccountName": "p********",
+    "AccountName": "p********",
+    "Cnpj": null,
+    "Id": "4b58f767-9065-49ac-8802-94065c969d49",
+    "AppId": null,
+    "IsActive": true,
+    "IsOperating": true,
+    "CreationDate": "2023-06-30T22:12:29.5294835Z",
+    "OperationDate": "2024-04-08T15:55:32.8498396Z",
+    "CompanyName": "P************",
+    "TradingName": "P**************",
+    "City": null,
+    "Complement": null,
+    "Country": null,
+    "State": null,
+    "Address": null,
+    "District": null,
+    "Number": null,
+    "PostalCode": null,
+    "Licenses": [
+      7
+    ],
+    "ParentAccountId": null,
+    "ParentAccountName": null,
+    "InactivationDate": null,
+    "Platform": "vtex",
+    "Privacy": null,
+    "HasPiiRestriction": false,
+    "Infra": null,
+    "Sponsor": "751eb87e-5133-4058-bd56-e9a32ae4fbd6"
+  }
+}
