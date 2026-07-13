@@ -1,0 +1,515 @@
+// confirmación de orden con delivery
+
+{
+	"package": null,
+	"subjectItemAttachment": {
+		"item": "Blusa Con Encaje BLA...",
+		"totalItems": 1
+	},
+	"cancellationReason": null,
+	"paymentData": {
+		"giftCards": [],
+		"transactions": [
+			{
+				"isActive": true,
+				"transactionId": "2EFC0E8B2CEC419F91BF6D03C1FA02A0",
+				"merchantName": "P********",
+				"payments": [
+					{
+						"id": "0168075ED6C44051882B893604840BAA",
+						"paymentSystem": "202",
+						"paymentSystemName": "T****************",
+						"value": 7198000,
+						"installments": 1,
+						"referenceValue": 7198000,
+						"cardHolder": null,
+						"cardNumber": null,
+						"firstDigits": null,
+						"lastDigits": null,
+						"cvv2": null,
+						"expireMonth": null,
+						"expireYear": null,
+						"url": null,
+						"giftCardId": null,
+						"giftCardName": null,
+						"giftCardCaption": null,
+						"redemptionCode": null,
+						"group": "promissory",
+						"tid": "50016110",
+						"dueDate": null,
+						"connectorResponses": {
+							"Tid": "50016110",
+							"ReturnCode": null,
+							"Message": null,
+							"authId": "0168075ED6C44051882B893604840BAA"
+						},
+						"giftCardProvider": null,
+						"giftCardAsDiscount": null,
+						"koinUrl": null,
+						"accountId": null,
+						"parentAccountId": null,
+						"bankIssuedInvoiceIdentificationNumber": null,
+						"bankIssuedInvoiceIdentificationNumberFormatted": null,
+						"bankIssuedInvoiceBarCodeNumber": null,
+						"bankIssuedInvoiceBarCodeType": null,
+						"billingAddress": null,
+						"paymentOrigin": null
+					}
+				]
+			}
+		]
+	},
+	"cancellationRequests": null,
+	"invoiceData": null,
+	"clientProfileData": {
+		"id": "clientProfileData",
+		"email": "c************@y****.c****************.c*.v***.c**.b*",
+		"firstName": "C******",
+		"lastName": "c*****",
+		"documentType": "rutCHL",
+		"document": "1********",
+		"phone": "+5**********",
+		"corporateName": null,
+		"tradeName": null,
+		"corporateDocument": null,
+		"stateInscription": null,
+		"corporatePhone": null,
+		"isCorporate": false,
+		"userProfileId": "513680c7-5223-4b66-8685-9a1c32a2fe96",
+		"userProfileVersion": null,
+		"customerClass": null,
+		"customerCode": null
+	},
+	"shippingData": {
+		"id": "shippingData",
+		"address": {
+			"addressType": "residential",
+			"receiverName": "C****** C*****",
+			"addressId": "8566821095225",
+			"versionId": null,
+			"entityId": null,
+			"postalCode": "7******",
+			"city": null,
+			"state": "REGIÓN METROPOLITANA",
+			"country": "CHL",
+			"street": "R**** C*******",
+			"number": "5",
+			"neighborhood": "P**********",
+			"complement": "6*",
+			"reference": null,
+			"geoCoordinates": [
+				-51.4779552,
+				-0.0039779
+			]
+		},
+		"logisticsInfo": [
+			{
+				"itemIndex": 0,
+				"itemId": "14960",
+				"selectedDeliveryChannel": "delivery",
+				"selectedSla": "Normal",
+				"lockTTL": "4d",
+				"price": 399000,
+				"listPrice": 399000,
+				"sellingPrice": 399000,
+				"deliveryWindow": {
+					"startDateUtc": "2026-07-21T08:00:00+00:00",
+					"endDateUtc": "2026-07-21T22:00:00+00:00",
+					"price": 0
+				},
+				"deliveryCompany": null,
+				"shippingEstimate": "1bd",
+				"shippingEstimateDate": "2026-07-21T08:00:00+00:00",
+				"slas": [
+					{
+						"id": "Normal",
+						"name": "N*****",
+						"shippingEstimate": "1bd",
+						"shippingEstimateDate": "2026-07-21T08:00:00+00:00",
+						"deliveryWindow": {
+							"startDateUtc": "2026-07-21T08:00:00+00:00",
+							"endDateUtc": "2026-07-21T22:00:00+00:00",
+							"price": 0
+						},
+						"availableDeliveryWindows": [],
+						"deliveryIds": [
+							{
+								"courierId": "COURRIER4",
+								"courierName": "9*********",
+								"dockId": "1",
+								"quantity": 1,
+								"warehouseId": "22",
+								"accountCarrierName": "p********",
+								"kitItemDetails": []
+							}
+						],
+						"listPrice": 399000,
+						"price": 399000,
+						"deliveryChannel": "delivery",
+						"pickupStoreInfo": {
+							"additionalInfo": null,
+							"address": null,
+							"dockId": null,
+							"friendlyName": null,
+							"isPickupStore": false
+						},
+						"polygonName": "",
+						"lockTTL": "4d",
+						"pickupPointId": null,
+						"transitTime": "1bd",
+						"pickupDistance": 0
+					}
+				],
+				"shipsTo": [
+					"CHL"
+				],
+				"deliveryIds": [
+					{
+						"courierId": "COURRIER4",
+						"courierName": "9*********",
+						"dockId": "1",
+						"quantity": 1,
+						"warehouseId": "22",
+						"accountCarrierName": "p********",
+						"kitItemDetails": []
+					}
+				],
+				"deliveryChannels": [
+					{
+						"id": "delivery",
+						"stockBalance": 0
+					},
+					{
+						"id": "pickup-in-point",
+						"stockBalance": 0
+					}
+				],
+				"deliveryChannel": null,
+				"pickupStoreInfo": {
+					"additionalInfo": null,
+					"address": null,
+					"dockId": null,
+					"friendlyName": null,
+					"isPickupStore": false
+				},
+				"addressId": "8566821095225",
+				"versionId": null,
+				"entityId": null,
+				"polygonName": "",
+				"pickupPointId": null,
+				"transitTime": "1bd"
+			}
+		],
+		"trackingHints": [],
+		"selectedAddresses": [
+			{
+				"addressId": "8566821095225",
+				"versionId": null,
+				"entityId": null,
+				"addressType": "residential",
+				"receiverName": "C****** C*****",
+				"street": "R**** C*******",
+				"number": "5",
+				"complement": "6*",
+				"neighborhood": "P**********",
+				"postalCode": "7******",
+				"city": null,
+				"state": "REGIÓN METROPOLITANA",
+				"country": "CHL",
+				"reference": null,
+				"geoCoordinates": [
+					-51.4779552,
+					-0.0039779
+				]
+			}
+		],
+		"availableAddresses": [
+			{
+				"addressId": "8566821095225",
+				"versionId": null,
+				"entityId": null,
+				"addressType": "residential",
+				"receiverName": "C****** C*****",
+				"street": "R**** C*******",
+				"number": "5",
+				"complement": "6*",
+				"neighborhood": "P**********",
+				"postalCode": "7******",
+				"city": null,
+				"state": "REGIÓN METROPOLITANA",
+				"country": "CHL",
+				"reference": null,
+				"geoCoordinates": [
+					-51.4779552,
+					-0.0039779
+				]
+			}
+		],
+		"contactInformation": [],
+		"contactsInfo": []
+	},
+	"customData": {
+		"customApps": [
+			{
+				"fields": {
+					"cuotas": "8"
+				},
+				"id": "payment",
+				"major": 1
+			}
+		],
+		"customFields": []
+	},
+	"purchaseAgentData": null,
+	"authorizationPolicyData": {
+		"Status": "accepted",
+		"DeniedPolicies": [],
+		"PendingPolicies": []
+	},
+	"items": [
+		{
+			"additionalInfo": {
+				"categoriesIds": "/3/21/",
+				"productClusterId": "164,205,249",
+				"commercialConditionId": "1",
+				"dimension": {
+					"cubicweight": 0.9375,
+					"height": 3,
+					"length": 50,
+					"weight": 450,
+					"width": 30
+				},
+				"brandName": "P********",
+				"brandId": "2000000",
+				"offeringInfo": null,
+				"offeringType": null,
+				"offeringTypeId": null
+			},
+			"sellerSku": "14960",
+			"priceTable": null,
+			"priceValidUntil": "2027-07-13T21:14:37Z",
+			"callCenterOperator": null,
+			"commission": 0,
+			"freightCommission": 0,
+			"taxCode": "",
+			"catalogProvider": "vrn:vtex.catalog-api-proxy:-:privilege:master:/proxy/authenticated/catalog/pvt/sku/stockkeepingunitbyid/14960",
+			"uniqueId": "1FD685C89B8C4527AB904448A78D7172",
+			"id": "14960",
+			"productId": "4234",
+			"productRefId": "4520736-200",
+			"refId": "4520736040200",
+			"ean": "4520736040200",
+			"name": "B***************************",
+			"skuName": "B**********",
+			"modalType": null,
+			"parentItemIndex": null,
+			"parentAssemblyBinding": null,
+			"assemblies": [],
+			"tax": 0,
+			"price": 7499000,
+			"listPrice": 7499000,
+			"manualPrice": null,
+			"manualPriceAppliedBy": null,
+			"sellingPrice": 6799000,
+			"rewardValue": 0,
+			"isGift": false,
+			"preSaleDate": null,
+			"productCategoryIds": "/3/21/",
+			"productCategories": {
+				"3": "Vestuario",
+				"21": "Blusas y Camisas"
+			},
+			"quantity": 1,
+			"seller": "1",
+			"sellerChain": [
+				"1"
+			],
+			"imageUrl": "https://privilege.vteximg.com.br/arquivos/ids/244764-100-150/4520736_200_1.jpg?v=639131770301130000",
+			"detailUrl": "/4520736-200-blusa-con-encaje-blanca/p",
+			"components": [],
+			"bundleItems": [],
+			"attachments": [],
+			"attachmentOfferings": [],
+			"offerings": [],
+			"priceTags": [
+				{
+					"name": "d*******************************************************************************************************",
+					"value": -700000,
+					"rawValue": -7000,
+					"isPercentual": false,
+					"identifier": "521c8880-dfd1-48f6-8abf-88b89313be90"
+				}
+			],
+			"availability": "available",
+			"measurementUnit": "un",
+			"unitMultiplier": 1,
+			"manufacturerCode": null,
+			"priceDefinition": {
+				"calculatedSellingPrice": 6799000,
+				"total": 6799000,
+				"sellingPrices": [
+					{
+						"value": 6799000,
+						"quantity": 1
+					}
+				]
+			}
+		}
+	],
+	"sellers": [
+		{
+			"subSellerId": "1",
+			"fulfillmentEndpoint": "http://fulfillment.vtexcommerce.com.br/api/fulfillment?an=privilege",
+			"id": "1",
+			"name": "P**************",
+			"logo": null
+		}
+	],
+	"giftRegistryData": null,
+	"receiptData": null,
+	"contextData": null,
+	"marketPlaceOrderId": "",
+	"marketPlaceOrderGroup": null,
+	"marketplaceServicesEndpoint": null,
+	"orderFormId": "f6e301ee7db74c07a14785509c21fefe",
+	"sequence": "592446",
+	"affiliateId": "",
+	"status": "",
+	"callCenterOperator": "",
+	"userProfileId": "513680c7-5223-4b66-8685-9a1c32a2fe96",
+	"hostName": "p********",
+	"creationVersion": null,
+	"creationEnvironment": null,
+	"lastChangeVersion": null,
+	"workflowInstanceId": null,
+	"marketplacePaymentValue": null,
+	"orderId": "1646530592446-01",
+	"orderGroup": "1646530592446",
+	"state": "payment-approved",
+	"isCheckedIn": false,
+	"sellerOrderId": "00-1646530592446-01",
+	"storeId": null,
+	"checkedInPickupPointId": null,
+	"value": 7198000,
+	"totals": [
+		{
+			"id": "Items",
+			"name": "T*****************",
+			"value": 7499000
+		},
+		{
+			"id": "Discounts",
+			"name": "T******************",
+			"value": -700000
+		},
+		{
+			"id": "Shipping",
+			"name": "C********************",
+			"value": 399000
+		},
+		{
+			"id": "Tax",
+			"name": "C*********************",
+			"value": 0
+		}
+	],
+	"ratesAndBenefitsData": {
+		"rateAndBenefitsIdentifiers": [
+			{
+				"id": "521c8880-dfd1-48f6-8abf-88b89313be90",
+				"name": "T****************",
+				"featured": true,
+				"description": "Precio Tarjeta Privilege (No cambiar nombre)",
+				"matchedParameters": {
+					"paymentMethodId": "202"
+				},
+				"additionalInfo": null
+			}
+		],
+		"teaser": []
+	},
+	"clientPreferencesData": {
+		"locale": "es-CL",
+		"optinNewsLetter": true
+	},
+	"commercialConditionData": null,
+	"marketingData": {
+		"utmSource": "google",
+		"utmMedium": "search",
+		"utmCampaign": "creato_aobrand",
+		"utmipage": "",
+		"utmiPart": "",
+		"utmiCampaign": "",
+		"coupon": null,
+		"marketingTags": []
+	},
+	"storePreferencesData": {
+		"countryCode": "CHL",
+		"saveUserData": false,
+		"timeZone": "Pacific SA Standard Time",
+		"currencyCode": "CLP",
+		"currencyLocale": 13322,
+		"currencySymbol": "$",
+		"currencyFormatInfo": {
+			"currencyDecimalDigits": 0,
+			"currencyDecimalSeparator": ",",
+			"currencyGroupSeparator": ".",
+			"currencyGroupSize": 3,
+			"startsWithCurrencySymbol": true
+		}
+	},
+	"openTextField": {
+		"value": "C****** 8"
+	},
+	"itemMetadata": null,
+	"taxData": null,
+	"hooksData": null,
+	"changeData": null,
+	"subscriptionData": null,
+	"salesChannel": "1",
+	"followUpEmail": "a**********************************.v***.c**.b*",
+	"creationDate": "2026-07-13T21:18:08.353397Z",
+	"lastChange": "2026-07-13T21:18:42.520073Z",
+	"timeZoneCreationDate": "2026-07-13T17:18:08.353397",
+	"timeZoneLastChange": "2026-07-13T17:18:42.520073",
+	"isCompleted": true,
+	"merchantName": null,
+	"userType": "",
+	"roundingError": 0,
+	"allowEdition": false,
+	"allowCancellation": false,
+	"isUserDataVisible": false,
+	"allowChangeSeller": false,
+	"_accountInfo": {
+		"MainAccountName": "p********",
+		"AccountName": "p********",
+		"Cnpj": null,
+		"Id": "4b58f767-9065-49ac-8802-94065c969d49",
+		"AppId": null,
+		"IsActive": true,
+		"IsOperating": true,
+		"CreationDate": "2023-06-30T22:12:29.5294835Z",
+		"OperationDate": "2024-04-08T15:55:32.8498396Z",
+		"CompanyName": "P************",
+		"TradingName": "P**************",
+		"City": null,
+		"Complement": null,
+		"Country": null,
+		"State": null,
+		"Address": null,
+		"District": null,
+		"Number": null,
+		"PostalCode": null,
+		"Licenses": [
+			7
+		],
+		"ParentAccountId": null,
+		"ParentAccountName": null,
+		"InactivationDate": null,
+		"Platform": "vtex",
+		"Privacy": null,
+		"HasPiiRestriction": false,
+		"Infra": null,
+		"Sponsor": "751eb87e-5133-4058-bd56-e9a32ae4fbd6"
+	}
+}
