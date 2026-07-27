@@ -1,0 +1,797 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{_accountInfo.TradingName}}</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=lato&display=swap');
+    </style>
+    {{eval "
+    Handlebars.registerHelper('getColor', function(skuname) {
+
+    const temp = skuname.split(' - ');
+
+    return temp[0];
+
+    });
+    "}}
+
+    {{eval "
+    Handlebars.registerHelper('getTalla', function(skuname) {
+
+    const temp = skuname.split(' - ');
+
+    return temp[1];
+
+    });
+    "}}
+
+    {{eval "
+  Handlebars.registerHelper('getSkuName', function(productId, itemMetadata) {
+  const item = itemMetadata.Items.find(item => item.Id === productId);
+  return item ? item.SkuName : '';
+  });
+  "}}
+
+  {{eval "
+  Handlebars.registerHelper('capitalize', function(text) {
+  const words = text.split(' ');
+  const capitalizedWords = words.map(word => {
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+  return capitalizedWords.join(' ');
+  });
+  "}}
+  
+  {{eval "
+  Handlebars.registerHelper('ifMultipleItems', function(items, options) {
+  if (items.length > 1) {
+  return options.fn(this);
+  } else {
+  return options.inverse(this);
+  }
+  });
+  "}}
+
+  {{eval "
+  Handlebars.registerHelper('countAndDoSomething', function(items_not_packed, options) {
+  const itemCount = items_not_packed.length;
+  if (itemCount > 0) {
+  return options.fn(this);
+  } else {
+  return options.inverse(this);
+  }
+  });
+  "}}
+
+</head>
+
+<body>
+    <!-- inicio imagenes logos -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center"
+        style="padding: 0; background: #FFFFFF; width: 100%; max-width: 500px;height: auto;margin: 0 auto;">
+        <tr style="box-sizing: border-box !important;  box-shadow: 0 7px 7px -6px rgba(0, 0, 0, 0.10);">
+            <td style="padding: 10px; box-sizing: border-box; height: 64px; border-collapse: collapse; width: 600px; border-right:0px;"
+                align="center">
+                <a style="display: block; margin: 0; padding: 0; outline: none; border: none">
+                    <img height="33.727px" border="0" width="150" style="border:none;border-left:0px;" alt=""
+                        src="https://privilege.myvtex.com/arquivos/LogoGeneral.png" class="img-logo">
+                </a>
+            </td>
+        </tr>
+        <tr style="box-sizing: border-box !important;">
+            <td align="center" style="padding-bottom: 30px; padding-top: 20px; height: 40px;">
+                <a>
+                    <img height="40" border="0" width="40" style="border:none;border-left:0px;border-right:0px;" alt=""
+                        src="https://privilege.myvtex.com/arquivos/aprovado.png" class="img-logo">
+                </a>
+            </td>
+        </tr>
+        <tr style="box-sizing: border-box !important;">
+            <td align="center" style="padding-bottom: 10px; height: 96px;">
+                <a>
+                    <img height="96" border="0" width="234" style="border:none;border-left:0px;border-right:0px;" alt=""
+                        src="https://privilege.myvtex.com/arquivos/img_producto_entregado.png" class="img-logo">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <!-- fin imagenes logos -->
+
+    <!-- inicio mensaje cliente -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center"
+        style="padding: 0; background: #FFFFFF; width: 100%; max-width: 500px;height: auto;margin: 0 auto;">
+        <tr style="box-sizing: border-box !important;">
+            <td style="padding: 20px 50px;box-sizing: border-box; border-collapse: collapse; text-align: left; width: 100% !important; font-family: 'Trebuchet MS', arial, sans-serif"
+                align="left">
+                <span style="box-sizing: border-box !important;">
+                    <p
+                        style="color: var(--Negro, #222221); font-family: 'Trebuchet MS', arial, sans-serif; font-size: 13px; font-style: normal; font-weight: 700; line-height: 16px; letter-spacing: 2.6px;">
+                        <strong>
+                            {{#compare clientProfileData.firstName '!=' 'isAnonymous'}}
+                            Hola, {{clientProfileData.firstName}}.
+                            {{/compare}}
+                        </strong>
+                    </p>
+                </span>
+                <span style="display: block; width: 500px; box-sizing: border-box !important;">
+
+                    {{#eq shippingData.logisticsInfo.0.deliveryChannel "pickup-in-point"}}
+                    <p
+                        style="color: var(--Negro, #222221); font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: 15px; letter-spacing: 1.1px;">
+                        Te informamos que tu pedido
+                        <strong
+                            style="color: var(--Negro, #222221); font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: 15px; letter-spacing: 1.1px;">
+                            {{#eq affiliateId "RVS"}}
+                            #800{{sequence}}
+                            {{else}}
+                            #000{{sequence}}
+                            {{/eq}}
+                        </strong>
+                        ya fue entregado 
+                        {{#countAndDoSomething items_not_packed}}
+                        parcialmente
+                        {{/countAndDoSomething}}
+                        en nuestra tienda <strong>{{
+                            shippingData.pickupPoints.0.friendlyName}}</strong>. Esperamos que lo disfrutes.
+                    </p>
+                    {{else}}
+                    <p
+                        style="color: var(--Negro, #222221); font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: 15px; letter-spacing: 1.1px;">
+                        Te informamos que tu pedido
+                        <strong
+                            style="color: var(--Negro, #222221); font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: 15px; letter-spacing: 1.1px;">
+                            {{#eq affiliateId "RVS"}}
+                            #800{{sequence}}
+                            {{else}}
+                            #000{{sequence}}
+                            {{/eq}}
+                        </strong>
+                        ya fue entregado
+                        {{#countAndDoSomething items_not_packed}}
+                        parcialmente
+                        {{/countAndDoSomething}}
+                        en la dirección <strong>{{shippingData.address.street}}
+                            {{shippingData.address.number}}.,
+                            {{shippingData.selectedAddresses.0.state}}
+                            {{shippingData.selectedAddresses.0.neighborhood}}.</strong> Esperamos que lo disfrutes.
+                    </p>
+                    {{/eq}}
+                </span>
+            </td>
+        </tr>
+    </table>
+    <!-- fin mensaje cliente -->
+
+    <!-- inicio img estado pedido -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center"
+        style="padding: 0; background: #FFFFFF; width: 100%; max-width: 500px;height: auto;margin: 0 auto;">
+        <tr>
+            <td align="center">
+                {{#eq shippingData.logisticsInfo.0.deliveryChannel "pickup-in-point"}}
+                <img height="144" border="0" width="500" style="border:none; border-left:0px; border-right:0px;" alt=""
+                    src="https://privilege.myvtex.com/arquivos/pedidolistopararetironew.jpg" class="img-logo">
+                {{else}}
+                <img height="144" border="0" width="500" style="border:none; border-left:0px; border-right:0px;" alt=""
+                    src="https://privilege.myvtex.com/arquivos/pedidoenviadonew.jpg" class="img-logo">
+                {{/eq}}
+        </tr>
+    </table>
+    <!-- fin img estado pedido -->
+
+    <!-- inicion titulo detalle producto -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center"
+        style="padding: 0; background: #FFFFFF; width: 100%; max-width: 600px;height: auto;margin: 0 auto;">
+        <tr>
+            <td align="left" style="padding: 20px 0px">
+                <a>
+                    <img height="12" border="0" width="330" style="border:none; border-left:0px; border-right:0px;"
+                        alt="" src="https://privilege.myvtex.com/arquivos/Resumen_Productos_Entregados2.png"
+                        class="img-logo">
+                </a>
+            </td>
+        </tr>
+    </table>
+    <!-- fin titulo detalle producto -->
+
+    <!-- inicion detalle de producto -->
+  {{#countAndDoSomething items_not_packed}}
+  <table border="0" cellpadding="0" cellspacing="0" align="center" width="500px"
+    style="border: 1px solid #C8C8C8; padding: 15px; background: #FFFFFF; max-width: 500px;height: auto;margin: 0 auto;">
+    <thead style="height: 12px;">
+      <tr>
+        <th width="25%" style="text-align: left;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin-bottom: 0.5rem;padding-bottom: 0.5rem;">
+            entregados
+          </p>
+        </th>
+        <th width="25%">
+          <p style="border-bottom: 1px solid #C8C8C8;margin-bottom: 0.7rem; padding-bottom: 0.5rem; height: 13px;">
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin-bottom: 0.5rem;padding-bottom: 0.5rem;">
+            Cantidad
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin-bottom: 0.5rem; padding-bottom: 0.5rem;">
+            TOTAL
+          </p>
+        </th>
+      </tr>
+    </thead>
+    {{#ifMultipleItems items}}
+    {{#each items}}
+    <tbody>
+      <tr>
+        <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+          <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+        </td>
+        <td width="25%" style="vertical-align: top;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+            {{name}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+            SKU: {{refId}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Color: {{getColor (getSkuName id ../itemMetadata)}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            {{quantity}} ud.
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+          </p>
+        </td>
+      </tr>
+      {{#unless @last}}
+      <tr>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+      </tr>
+      {{/unless}}
+    </tbody>
+    {{/each}}
+    {{else}}
+    {{#each items}}
+    <tbody>
+      <tr>
+        <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+          <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+        </td>
+        <td width="25%" style="vertical-align: top;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+            {{name}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+            SKU: {{refId}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Color: {{getColor (getSkuName id ../itemMetadata)}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            {{quantity}} ud.
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+          </p>
+        </td>
+      </tr>
+      {{#unless @last}}
+      <tr>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+      </tr>
+      {{/unless}}
+    </tbody>
+    {{/each}}
+    {{/ifMultipleItems}}
+    <thead style="height: 12px;">
+      <tr>
+        <th width="25%" style="text-align: left">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; border-top: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 0.5rem 0; padding: 0.5rem 0;">
+            no entregados
+          </p>
+        </th>
+        <th width="25%" style="text-align: left;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; border-top: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 0.5rem 0; padding: 0.5rem 0;">
+
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; border-top: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin: 0.5rem 0; padding: 0.5rem 0;">
+
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; border-top: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin: 0.5rem 0; padding: 0.5rem 0;">
+
+          </p>
+        </th>
+      </tr>
+    </thead>
+    {{#ifMultipleItems items_not_packed}}
+    {{#each items_not_packed}}
+    <tbody>
+      <tr>
+        <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+          <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+        </td>
+        <td width="25%" style="vertical-align: top;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+            {{name}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+            SKU: {{refId}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Color: {{getColor (getSkuName id ../itemMetadata)}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            {{quantity}} ud.
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+          </p>
+        </td>
+      </tr>
+      {{#unless @last}}
+      <tr>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+      </tr>
+      {{/unless}}
+    </tbody>
+    {{/each}}
+    {{else}}
+    {{#each items_not_packed}}
+    <tbody>
+      <tr>
+        <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+          <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+        </td>
+        <td width="25%" style="vertical-align: top;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+            {{name}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+            SKU: {{refId}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Color: {{getColor (getSkuName id ../itemMetadata)}}
+          </p>
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+            Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            {{quantity}} ud.
+          </p>
+        </td>
+        <td width="25%" style="vertical-align: top; text-align: center;">
+          <p
+            style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+            ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+          </p>
+        </td>
+      </tr>
+      {{#unless @last}}
+      <tr>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+        <td>
+          <img height="0" border="0" width="100%"
+            style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+            alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+        </td>
+      </tr>
+      {{/unless}}
+    </tbody>
+    {{/each}}
+    {{/ifMultipleItems}}
+  </table>
+  {{else}}
+  <table border="0" cellpadding="0" cellspacing="0" align="center" width="500px"
+    style="border: 1px solid #C8C8C8; padding: 15px; background: #FFFFFF; max-width: 500px;height: auto;margin: 0 auto;">
+    <thead style="height: 12px;">
+      <tr>
+        <th width="25%" style="text-align: left;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin-bottom: 0.5rem;padding-bottom: 0.5rem;">
+            Producto
+          </p>
+        </th>
+        <th width="25%">
+          <p style="border-bottom: 1px solid #C8C8C8;margin-bottom: 0.5rem; padding-bottom: 0.5rem; height: 13px;">
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin-bottom: 0.5rem;padding-bottom: 0.5rem;">
+            Cantidad
+          </p>
+        </th>
+        <th width="25%" style="text-align: center;">
+          <p
+            style="border-bottom: 1px solid #C8C8C8; color: #222221; height: 13px; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; text-align: center; margin-bottom: 0.5rem; padding-bottom: 0.5rem;">
+            TOTAL
+          </p>
+        </th>
+      </tr>
+    </thead>
+    {{#ifMultipleItems items}}
+        {{#each items}}
+        <tbody>
+        <tr>
+            <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+            <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+            </td>
+            <td width="25%" style="vertical-align: top;">
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+                {{name}}
+            </p>
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+                SKU: {{refId}}
+            </p>
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+                Color: {{getColor (getSkuName id ../itemMetadata)}}
+            </p>
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+                Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+            </p>
+            </td>
+            <td width="25%" style="vertical-align: top; text-align: center;">
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+                {{quantity}} ud.
+            </p>
+            </td>
+            <td width="25%" style="vertical-align: top; text-align: center;">
+            <p
+                style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+                ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+            </p>
+            </td>
+        </tr>
+        {{#unless @last}}
+        <tr>
+            <td>
+            <img height="0" border="0" width="100%"
+                style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+                alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+            </td>
+            <td>
+            <img height="0" border="0" width="100%"
+                style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+                alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+            </td>
+            <td>
+            <img height="0" border="0" width="100%"
+                style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+                alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+            </td>
+            <td>
+            <img height="0" border="0" width="100%"
+                style="border:none; border-left:0px; border-right:0px; border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin-bottom: 0.5rem; padding-bottom: 0.5rem;"
+                alt="" src="https://privilege.myvtex.com/arquivos/linea_productos.png" class="img-logo">
+            </td>
+        </tr>
+        {{/unless}}
+        </tbody>
+        {{/each}}
+    {{else}}
+        {{#each items}}
+        <tbody>
+            <tr>
+                <td width="25%" style="padding: 0.5rem 0; margin-bottom: 0.5rem;">
+                    <img src="{{imageUrl}}" alt="Producto - Privilege" style="margin-right: 15px;">
+                </td>
+                <td width="25%" style="vertical-align: top;">
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 8px 0 10px;">
+                        {{name}}
+                    </p>
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 0.22px; text-align: left; margin: 0 0 10px;">
+                        SKU: {{refId}}
+                    </p>
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+                        Color: {{getColor (getSkuName id ../itemMetadata)}}
+                    </p>
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: 1.1px; text-align: left; margin: 0 0 10px;">
+                        Talla: {{getTalla (getSkuName id ../itemMetadata)}}
+                    </p>
+                    </td>
+                    <td width="25%" style="vertical-align: top; text-align: center;">
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+                        {{quantity}} ud.
+                    </p>
+                    </td>
+                    <td width="25%" style="vertical-align: top; text-align: center;">
+                    <p
+                        style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing:  0.22px; text-align: center; margin: 31px 0 10px;">
+                        ${{replace (formatCurrency (multiply price quantity)) ",00" ""}}
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+        {{/each}}
+    {{/ifMultipleItems}}
+  </table>
+  {{/countAndDoSomething}}
+  <!-- fin detalle de producto -->
+
+    <!-- inicio totales pedido -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="500px"
+        style="background: #FFFFFF; width: 100%; max-width: 500px; height: auto; margin: 1rem auto 0; padding: 0 0 0 1.5rem;">
+        <tbody style="display: grid; margin: 0 0px 5px auto; width: 220px;">
+            {{#each totals}}
+            {{#unless @last}}
+            <tr>
+                <td style="text-align: start;">
+                    <p
+                        style="width: 110px; height: 20px; color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: 17px; letter-spacing: 1.1px; text-transform: uppercase; margin: 0;">
+                        {{#eq id "Items"}}
+                        SubTotal
+                        {{/eq}}
+                        {{#eq id "Discounts"}}
+                        Descuentos
+                        {{/eq}}
+                        {{#eq id "Shipping"}}
+                        Envío
+                        {{/eq}}
+                    </p>
+                </td>
+                <td style="text-align: end;">
+                    <p
+                        style="width: 110px; height: 20px; color:#222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 400; line-height: 17px; letter-spacing: 1.1px; text-transform: uppercase; margin: 0;">
+                        {{#eq id "Items"}}
+                        ${{replace (formatCurrency value) ",00" ""}}
+                        {{/eq}}
+                        {{#eq id "Discounts"}}
+                        ${{replace (formatCurrency value) ",00" ""}}
+                        {{/eq}}
+                        {{#eq id "Shipping"}}
+                        ${{replace (formatCurrency value) ",00" ""}}
+                        {{/eq}}
+                    </p>
+                </td>
+            </tr>
+            {{/unless}}
+            {{/each}}
+        </tbody>
+        <tfoot style="display: grid; margin: 0 0px 0 auto;width: 220px; border-top: 1px solid #C8C8C8;">
+            {{#if value}}
+            <tr style="margin-top: 10px;">
+                <td style="text-align: start;">
+                    <p
+                        style="width: 110px; height: 20px; color:#222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 0;">
+                        Total
+                    </p>
+                </td>
+
+                <td style="text-align: end;">
+                    <p
+                        style="width: 110px; height: 20px; color:#222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: normal; letter-spacing: 1.1px; text-transform: uppercase; margin: 0;">
+                        ${{replace (formatCurrency value) ",00" ""}}
+                    </p>
+                </td>
+            </tr>
+            {{/if}}
+        </tfoot>
+    </table>
+    <!-- fin productos pedido -->
+
+    <!-- linea footer detalle usuario -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center"
+        style="padding: 0; background: #FFFFFF; width: 100%; max-width: 600px;height: auto;margin: 0 auto;">
+        <tr>
+            <td>
+                <p width="600" height="0"
+                    style="border-bottom: 1px solid var(--Gris-Desactivado, #C8C8C8); margin: 20px 0 0"></p>
+            </td>
+        </tr>
+    </table>
+    <!-- fin linea footer detalle usuario -->
+
+    <!-- inicio footer -->
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="600px"
+        style="padding: 0; background: #FFFFFF; max-width: 600px; margin: 0 auto;">
+        <tr>
+            <td width="100%" style="text-align: center; padding: 20px;">
+                <p
+                    style="margin:auto; width: 500px; color: #222221; text-align: center; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: 22px; letter-spacing: 1.65px; ">
+                    Si tienes alguna duda contáctanos a alguno de estos canales:
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="600px"
+        style="padding: 0; background: #FFFFFF; max-width: 600px; margin: 0 auto 30px;">
+        <tr>
+            <td width="42.5%" style="text-align: end;">
+                <div>
+                    <img src="https://privilege.myvtex.com/arquivos/WspFooter.png" alt="WSP" width="13" height="13"
+                        style="vertical-align: middle; " />
+                    <a href="https://api.whatsapp.com/send?phone=56938625091"
+                        style="text-decoration:none; padding-left: 5px; box-sizing: border-box; color:#222221; text-align: center; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: 22px; letter-spacing: 1.65px;">
+                        +56 9 3862 5091
+                    </a>
+                </div>
+            </td>
+
+            <td wwidth="5%" style="text-align: center; width: 5%;">
+                <img style="padding: 0 10px 0 7px; text-align: center; vertical-align:middle;" height="3" width="3"
+                    alt="{{_accountInfo.TradingName}}" src="https://privilege.myvtex.com/arquivos/PuntoFooter.png"
+                    class="punto-contactos">
+            </td>
+
+            <td width="42.5%" style="text-align: start; padding: 0;">
+                <div>
+                    <img src="https://privilege.myvtex.com/arquivos/MailFooter.png" alt="EMAIL" width="13" height="10"
+                        style="vertical-align: middle; " />
+                    <a href="mailto:sac@privilege.cl"
+                        style="text-decoration:none; padding-left: 5px; box-sizing: border-box; color:#222221; text-align: center; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 700; line-height: 22px; letter-spacing: 1.65px;">
+                        sac@privilege.cl
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="600px"
+        style="max-width: 600px; width: 600px; height: 85px; background: #F4F4F4; margin: auto;">
+        <tr>
+            <td style="padding-top: 15px; margin: auto; text-align: center;">
+                <a>
+                    <img height="27" border="0" width="120" style="border:none;border-left:0px;border-right:0px;"
+                        alt="{{_accountInfo.TradingName}}" src="https://privilege.myvtex.com/arquivos/LogoFooter.png"
+                        class="img-logo">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; width: 100% !important; font-family: 'Trebuchet MS', arial, sans-serif" align="left">
+                <span
+                    style="color: #222221; font-family: 'Trebuchet MS', arial, sans-serif; font-size: 11px; font-style: normal; font-weight: 300; line-height: normal; letter-spacing: 0.22px; box-sizing: border-box !important;">
+                    <p style="padding-bottom: 15px; margin: 0;">©Privilege 2024 - Todos los derechos reservados</p>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <!-- fin footer -->
+</body>
+
+</html>
